@@ -20,6 +20,9 @@ public class Account{
     }
     
     public boolean payIn(double amount){
+        if(amount < 0  || turnover + amount > turnoverMax) return false;
+        balance += amount;
+        turnover += amount;
         return true;
     }
     
@@ -31,6 +34,12 @@ public class Account{
     }
     
     public boolean transfer(Account goal, double amount){
+        if(!payOut(amount))return false;
+        if(!goal.payIn(amount)){
+            turnover -= amount; // roll back
+            payIn(amount);
+            return false;     
+        }
         return true;
     }
     
