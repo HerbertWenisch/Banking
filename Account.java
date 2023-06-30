@@ -24,6 +24,9 @@ public class Account{
     }
     
     public boolean payOut(double amount){
+        if(amount < 0 || amount > balance || turnover + amount > turnoverMax) return false;
+        balance -= amount;
+        turnover += amount;
         return true;
     }
     

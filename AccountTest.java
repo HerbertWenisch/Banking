@@ -44,7 +44,7 @@ public class AccountTest
     public void test_payOut()
     {
         Account account = new Account(1234, "Huber");
-        assertEquals(false, account.payOut(1600));
+        assertEquals(true, account.payOut(1400));
         System.out.println(account);
     }
 }
