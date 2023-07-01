@@ -38,6 +38,7 @@ public class Account{
         if(!goal.payIn(amount)){
             turnover -= amount; // roll back
             payIn(amount);
+            turnover -= amount;
             return false;     
         }
         return true;
